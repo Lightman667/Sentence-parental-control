@@ -1,0 +1,138 @@
+﻿<Window x:Class="ContentFilterApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ContentFilterApp"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None">
+
+    <Window.Resources>
+        <Storyboard x:Key="MenuShow">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="60"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="160"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="MenuHide">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="200"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="60"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonShow">
+            <BeginStoryboard Storyboard="{StaticResource MenuShow}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonHide">
+            <BeginStoryboard Storyboard="{StaticResource MenuHide}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="Loaded">
+            <EventTrigger.Actions>
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation
+                                Storyboard.TargetProperty="Opacity"
+                                From="0.4"
+                                To="1"
+                                Duration="0:0:0.5" />
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger.Actions>
+        </EventTrigger>
+    </Window.Triggers>
+
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush>
+                <GradientStop Color="#FF69E463" Offset="0.9"/>
+                <GradientStop Color="#FF0037F1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid Height="60" VerticalAlignment="Top">
+            <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Right">
+                <TextBlock x:Name="Name" Text="Имя Фамилия" Foreground="White" VerticalAlignment="Center" FontSize="18" Loaded="Name_Loaded"/>
+                <materialDesign:PopupBox  Margin="5" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False" Foreground="White">
+                    <StackPanel Width="150">
+                        <Button x:Name="ButtonAccount" Content="Аккаунт" Click="ButtonAccount_Click"/>
+                        <Button x:Name="ButtonSettings" Content="Настройки" Click="ButtonSettings_Click"/>
+                        <Button x:Name="ButtonHelp" Content="Помощь" Click="ButtonHelp_Click"/>
+                        <Separator/>
+                        <Button x:Name="ButtonLogout" Content="Выйти" Click="ButtonLogout_Click"/>
+                    </StackPanel>
+                </materialDesign:PopupBox>
+            </StackPanel>
+        </Grid>
+        <Grid x:Name="GridMenu" Width="60" HorizontalAlignment="Left" Background="#FF202022">
+            <StackPanel>
+                <Grid Height="150">
+                    <Grid.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF253042" Offset="0"/>
+                            <GradientStop Color="#FF202022" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Grid.Background>
+                    <Button x:Name="ButtonHide" Width="60" Height="60" Background="{x:Null}" BorderBrush="{x:Null}"  VerticalAlignment="Top" HorizontalAlignment="Right" Click="ButtonHide_Click" Visibility="Hidden">
+                        <materialDesign:PackIcon Kind="ArrowLeft" Width="25" Height="25" Foreground="White"/>
+                    </Button>
+                    <Button x:Name="ButtonShow" Width="60" Height="60" Background="{x:Null}" BorderBrush="{x:Null}"  VerticalAlignment="Top" HorizontalAlignment="Right" Click="ButtonShow_Click">
+                        <materialDesign:PackIcon Kind="Menu" Width="25" Height="25" Foreground="White"/>
+                    </Button>
+                </Grid>
+                <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" Foreground="#DDFFFFFF">
+                    <ListViewItem x:Name="MainView" Height="60" Selected="MainView_Selected">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Home" Width="25" Margin="10" Height="25" VerticalAlignment="Center" Foreground="#DDFFFFFF"/>
+                            <TextBlock Text="Главная" VerticalAlignment="Center" Margin="20 10" Foreground="#DDFFFFFF"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="60">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Table" Width="25" Margin="10" Height="25" VerticalAlignment="Center" Foreground="#DDFFFFFF"/>
+                            <TextBlock Text="Данные" VerticalAlignment="Center" Margin="20 10" Foreground="#DDFFFFFF"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="60">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="HelpCircleOutline" Width="25" Margin="10" Height="25" VerticalAlignment="Center" Foreground="#DDFFFFFF"/>
+                            <TextBlock Text="Помощь" VerticalAlignment="Center" Margin="20 10" Foreground="#DDFFFFFF"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="60" Selected="ListViewItem_Selected">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="LogoutVariant" Width="25" Margin="10" Height="25" VerticalAlignment="Center" Foreground="#DDFFFFFF"/>
+                            <TextBlock Text="Выход" VerticalAlignment="Center" Margin="20 10" Foreground="#DDFFFFFF"/>
+                        </StackPanel>
+                    </ListViewItem>
+                </ListView>
+            </StackPanel>
+        </Grid>
+        <Grid x:Name="MainGrid" Loaded="MainGrid_Loaded">
+            <TextBlock Text="Защити своего ребенка от нежелательного контента прямо сейчас
+ Выбирай пункты снизу, чтобы настроить программу" TextWrapping="Wrap" HorizontalAlignment="Center" Height="41" Margin="212,55,132,0" VerticalAlignment="Top" Width="456" TextAlignment="Center" Foreground="White" FontSize="14"/>
+            <Button HorizontalAlignment="Left" Height="149" Margin="179,116,0,0" VerticalAlignment="Top" Width="140" Style="{StaticResource ButtonGrad1}">
+                <TextBlock TextWrapping="Wrap" Height="31" TextAlignment="Center">Безопасный поиск на видеохостингах</TextBlock>
+            </Button>
+            <Button x:Name="GPS_Button" HorizontalAlignment="Left" Height="149" Margin="179,281,0,0" VerticalAlignment="Top" Width="140" Style="{StaticResource ButtonGrad1}" Click="GPS_Button_Click">
+                <TextBlock TextWrapping="Wrap" Height="51" Width="130" TextAlignment="Center">Узнать местонахождение ребенка</TextBlock>
+            </Button>
+            <Button HorizontalAlignment="Left" Height="149" Margin="363,116,0,0" VerticalAlignment="Top" Width="140" Style="{StaticResource ButtonGrad1}">
+                <TextBlock TextWrapping="Wrap" Height="51" Width="130" TextAlignment="Center">Контроль времени использования интернета</TextBlock>
+            </Button>
+            <Button HorizontalAlignment="Left" Height="149" Margin="363,281,0,0" VerticalAlignment="Top" Width="140" Style="{StaticResource ButtonGrad1}">
+                <TextBlock TextWrapping="Wrap" Height="31" TextAlignment="Center">Блокировка контента по категориям</TextBlock>
+            </Button>
+            <Button HorizontalAlignment="Left" Height="149" Margin="552,116,0,0" VerticalAlignment="Top" Width="140" Style="{StaticResource ButtonGrad1}">
+                <TextBlock TextWrapping="Wrap" Height="31" TextAlignment="Center">Блокировка программ</TextBlock>
+            </Button>
+            <Button HorizontalAlignment="Left" Height="149" Margin="552,281,0,0" VerticalAlignment="Top" Width="140" Style="{StaticResource ButtonGrad1}">
+                <TextBlock TextWrapping="Wrap" Height="31" TextAlignment="Center">История поисковых запросов</TextBlock>
+            </Button>
+            <Label x:Name="lab1" Content="Label" HorizontalAlignment="Left" Height="29" Margin="100,21,0,0" VerticalAlignment="Top" Width="71"/>
+            <Label x:Name="lab2" Content="Label" HorizontalAlignment="Left" Height="29" Margin="212,21,0,0" VerticalAlignment="Top" Width="71"/>
+        </Grid>
+    </Grid>
+</Window>
