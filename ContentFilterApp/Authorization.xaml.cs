@@ -48,7 +48,7 @@ namespace ContentFilterApp
                             {
                                 string nameUser = reader.GetValue(2).ToString();
                                 MainWindow main = new MainWindow();
-                                main.Name.Text=nameUser;
+                                main.Name1.Text=nameUser;
                                 this.Hide();
                                 main.Show();
                             } 
@@ -68,6 +68,11 @@ namespace ContentFilterApp
         private void textbox_password_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
             textbox_password.Clear();
+        }
+
+        private void textbox_login_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }

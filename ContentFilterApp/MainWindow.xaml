@@ -38,7 +38,7 @@
                                 Storyboard.TargetProperty="Opacity"
                                 From="0.4"
                                 To="1"
-                                Duration="0:0:0.5" />
+                                Duration="0:0:1" />
                     </Storyboard>
                 </BeginStoryboard>
             </EventTrigger.Actions>
@@ -54,7 +54,7 @@
         </Grid.Background>
         <Grid Height="60" VerticalAlignment="Top">
             <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Right">
-                <TextBlock x:Name="Name" Text="Имя Фамилия" Foreground="White" VerticalAlignment="Center" FontSize="18" Loaded="Name_Loaded"/>
+                <TextBlock x:Name="Name1" Text="Имя Фамилия" Foreground="White" VerticalAlignment="Center" FontSize="18" Loaded="Name_Loaded"/>
                 <materialDesign:PopupBox  Margin="5" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False" Foreground="White">
                     <StackPanel Width="150">
                         <Button x:Name="ButtonAccount" Content="Аккаунт" Click="ButtonAccount_Click"/>
@@ -89,16 +89,16 @@
                             <TextBlock Text="Главная" VerticalAlignment="Center" Margin="20 10" Foreground="#DDFFFFFF"/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem Height="60">
+                    <ListViewItem x:Name="DataTableItem" Height="60" Selected="DataTableItem_Selected">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Table" Width="25" Margin="10" Height="25" VerticalAlignment="Center" Foreground="#DDFFFFFF"/>
                             <TextBlock Text="Данные" VerticalAlignment="Center" Margin="20 10" Foreground="#DDFFFFFF"/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem Height="60">
+                    <ListViewItem x:Name="ContactItem" Height="60" Selected="ContactItem_Selected">
                         <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="HelpCircleOutline" Width="25" Margin="10" Height="25" VerticalAlignment="Center" Foreground="#DDFFFFFF"/>
-                            <TextBlock Text="Помощь" VerticalAlignment="Center" Margin="20 10" Foreground="#DDFFFFFF"/>
+                            <materialDesign:PackIcon Kind="Mail" Width="25" Margin="10" Height="25" VerticalAlignment="Center" Foreground="#DDFFFFFF"/>
+                            <TextBlock Text="Контакты" VerticalAlignment="Center" Margin="20 10" Foreground="#DDFFFFFF"/>
                         </StackPanel>
                     </ListViewItem>
                     <ListViewItem Height="60" Selected="ListViewItem_Selected">
@@ -119,7 +119,7 @@
             <Button x:Name="GPS_Button" HorizontalAlignment="Left" Height="149" Margin="179,281,0,0" VerticalAlignment="Top" Width="140" Style="{StaticResource ButtonGrad1}" Click="GPS_Button_Click">
                 <TextBlock TextWrapping="Wrap" Height="51" Width="130" TextAlignment="Center">Узнать местонахождение ребенка</TextBlock>
             </Button>
-            <Button HorizontalAlignment="Left" Height="149" Margin="363,116,0,0" VerticalAlignment="Top" Width="140" Style="{StaticResource ButtonGrad1}">
+            <Button x:Name="TimerOut" HorizontalAlignment="Left" Height="149" Margin="363,116,0,0" VerticalAlignment="Top" Width="140" Style="{StaticResource ButtonGrad1}" Click="TimerOut_Click">
                 <TextBlock TextWrapping="Wrap" Height="51" Width="130" TextAlignment="Center">Контроль времени использования интернета</TextBlock>
             </Button>
             <Button HorizontalAlignment="Left" Height="149" Margin="363,281,0,0" VerticalAlignment="Top" Width="140" Style="{StaticResource ButtonGrad1}">
@@ -128,11 +128,11 @@
             <Button HorizontalAlignment="Left" Height="149" Margin="552,116,0,0" VerticalAlignment="Top" Width="140" Style="{StaticResource ButtonGrad1}">
                 <TextBlock TextWrapping="Wrap" Height="31" TextAlignment="Center">Блокировка программ</TextBlock>
             </Button>
-            <Button HorizontalAlignment="Left" Height="149" Margin="552,281,0,0" VerticalAlignment="Top" Width="140" Style="{StaticResource ButtonGrad1}">
+            <Button x:Name="HistoryButton" HorizontalAlignment="Left" Height="149" Margin="552,281,0,0" VerticalAlignment="Top" Width="140" Style="{StaticResource ButtonGrad1}" Click="HistoryButton_Click">
                 <TextBlock TextWrapping="Wrap" Height="31" TextAlignment="Center">История поисковых запросов</TextBlock>
             </Button>
-            <Label x:Name="lab1" Content="Label" HorizontalAlignment="Left" Height="29" Margin="100,21,0,0" VerticalAlignment="Top" Width="71"/>
-            <Label x:Name="lab2" Content="Label" HorizontalAlignment="Left" Height="29" Margin="212,21,0,0" VerticalAlignment="Top" Width="71"/>
+            <Label x:Name="lab1" Visibility="Hidden" Content="Label" HorizontalAlignment="Left" Height="29" Margin="100,21,0,0" VerticalAlignment="Top" Width="71"/>
+            <Label x:Name="lab2" Visibility="Hidden" Content="Label" HorizontalAlignment="Left" Height="29" Margin="212,21,0,0" VerticalAlignment="Top" Width="71"/>
         </Grid>
     </Grid>
 </Window>

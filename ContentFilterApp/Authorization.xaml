@@ -76,7 +76,7 @@
                          HorizontalContentAlignment="Left"
                          Foreground="White"
                          Height="36"
-                         Margin="60,0,0,0" PreviewMouseDown="textbox_login_PreviewMouseDown"/>
+                         Margin="60,0,0,0" PreviewMouseDown="textbox_login_PreviewMouseDown" TextChanged="textbox_login_TextChanged"/>
                     <materialDesign:PackIcon Kind="User" Width="25" Margin="10" Height="25" VerticalAlignment="Center" Foreground="#DDFFFFFF" HorizontalAlignment="Center" RenderTransformOrigin="-0.907,0.52"/>
 
                 </StackPanel>

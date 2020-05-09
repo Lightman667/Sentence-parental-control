@@ -24,3 +24,9 @@ C:\Users\neina\source\repos\ContentFilterApp\ContentFilterApp\obj\Debug\Authoriz
 C:\Users\neina\source\repos\ContentFilterApp\ContentFilterApp\obj\Debug\SentenceButtonTheme.baml
 C:\Users\neina\source\repos\ContentFilterApp\ContentFilterApp\obj\Debug\LocationIP.g.cs
 C:\Users\neina\source\repos\ContentFilterApp\ContentFilterApp\obj\Debug\LocationIP.baml
+C:\Users\neina\source\repos\ContentFilterApp\ContentFilterApp\bin\Debug\GMap.NET.Core.dll
+C:\Users\neina\source\repos\ContentFilterApp\ContentFilterApp\bin\Debug\GMap.NET.WindowsPresentation.dll
+C:\Users\neina\source\repos\ContentFilterApp\ContentFilterApp\obj\Debug\Timer.g.cs
+C:\Users\neina\source\repos\ContentFilterApp\ContentFilterApp\obj\Debug\Timer.baml
+C:\Users\neina\source\repos\ContentFilterApp\ContentFilterApp\obj\Debug\History.g.cs
+C:\Users\neina\source\repos\ContentFilterApp\ContentFilterApp\obj\Debug\History.baml

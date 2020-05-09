@@ -89,7 +89,7 @@ namespace ContentFilterApp
 
         private void MainView_Selected(object sender, RoutedEventArgs e)
         {
-            MainView.Visibility = Visibility.Visible;
+            MainGrid.Visibility = Visibility.Visible;
         }
 
         private void GPS_Button_Click(object sender, RoutedEventArgs e)
@@ -103,6 +103,28 @@ namespace ContentFilterApp
             Watcher = new GeoCoordinateWatcher();
             Watcher.StatusChanged += Watcher_StatusChanged;
             Watcher.Start();
+        }
+
+        private void TimerOut_Click(object sender, RoutedEventArgs e)
+        {
+            Timer timer = new Timer();
+            timer.Show();
+        }
+
+        private void HistoryButton_Click(object sender, RoutedEventArgs e)
+        {
+            History history = new History();
+            history.Show();
+        }
+
+        private void DataTableItem_Selected(object sender, RoutedEventArgs e)
+        {
+            MainGrid.Visibility = Visibility.Hidden;
+        }
+
+        private void ContactItem_Selected(object sender, RoutedEventArgs e)
+        {
+            MainGrid.Visibility = Visibility.Hidden;
         }
     }
 }
